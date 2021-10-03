@@ -1,0 +1,24 @@
+{
+  "name": "apianotacoes",
+  "version": "1.0.0",
+  "description": "Uma api para controle de anotaçoes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Robertosousa86/api-anotacoes.git"
+  },
+  "keywords": [
+    "API",
+    "curso",
+    "tindin"
+  ],
+  "author": "Roberto Sousa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Robertosousa86/api-anotacoes/issues"
+  },
+  "homepage": "https://github.com/Robertosousa86/api-anotacoes#readme"
+}
