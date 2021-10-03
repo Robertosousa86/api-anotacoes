@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Robertosousa86/api-anotacoes/issues"
   },
-  "homepage": "https://github.com/Robertosousa86/api-anotacoes#readme"
+  "homepage": "https://github.com/Robertosousa86/api-anotacoes#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
