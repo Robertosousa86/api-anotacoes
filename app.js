@@ -30,6 +30,34 @@ app.post('/notes', (req, res) => {
   res.send({ message: 'Anotação salva com sucesso!' });
 });
 
+app.put('/notes', (req, res) => {
+  const { id, title, description } = req.body;
+
+  if (!id) return res.status(400).json({ message: 'Informe o campo id.' });
+
+  const note = notes.find((n) => n.id === id);
+
+  if (!note)
+    return res
+      .status(404)
+      .json({ message: 'Nenhuma anotação encontrada com esse id.' });
+
+  if (!title)
+    return res.status(400).json({ message: 'Informe o campo título.' });
+
+  if (!description)
+    return res.status(400).json({ message: 'Informe o campo descrição.' });
+
+  for (noteObjects of notes) {
+    if (noteObjects.id === id) {
+      noteObjects.title = title;
+      noteObjects.description = description;
+    }
+  }
+
+  res.send({ message: 'Anotação alterada com sucesso!' });
+});
+
 app.listen(PORT, () => {
   console.log(`App listen at http://localhost:${PORT}`);
 });
