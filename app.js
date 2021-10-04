@@ -16,6 +16,21 @@ app.get('/notes', (req, res) => {
   res.json(notes);
 });
 
+app.get('/notes/:id', (req, res) => {
+  const id = req.params.id;
+
+  if (!id) return res.status(400).json({ message: 'Informe o campo id.' });
+
+  const note = notes.find((n) => n.id === id);
+
+  if (!note)
+    return res
+      .status(404)
+      .json({ message: 'Nenhuma anotação encontrada com esse id.' });
+
+  res.json(notes);
+});
+
 app.post('/notes', (req, res) => {
   const { title, description } = req.body;
 
