@@ -1,4 +1,5 @@
 const express = require('express');
+const { v4: uuidv4 } = require('uuid');
 const app = express();
 
 app.use(express.json());
@@ -24,7 +25,7 @@ app.post('/notes', (req, res) => {
   if (!description)
     return res.status(400).json({ message: 'Informe o campo descrição.' });
 
-  notes.push({ title, description });
+  notes.push({ id: uuidv4(), title, description });
 
   res.send({ message: 'Anotação salva com sucesso!' });
 });
