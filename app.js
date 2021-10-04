@@ -58,6 +58,25 @@ app.put('/notes', (req, res) => {
   res.send({ message: 'Anotação alterada com sucesso!' });
 });
 
+app.delete('/notes', (req, res) => {
+  const { id } = req.body;
+
+  if (!id) return res.status(400).json({ message: 'Informe o campo id.' });
+
+  const note = notes.find((n) => n.id === id);
+
+  if (!note)
+    return res
+      .status(404)
+      .json({ message: 'Nenhuma anotação encontrada com esse id.' });
+
+  for (index in notes) {
+    if (notes[index].id === id) notes.splice(index, 1);
+  }
+
+  res.send({ message: 'Anotação excluída com sucesso!' });
+});
+
 app.listen(PORT, () => {
   console.log(`App listen at http://localhost:${PORT}`);
 });
