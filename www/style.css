@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.form {
+  background: pink;
+  display: block;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.form label {
+  display: block;
+}
+
+.form input,
+textarea {
+  padding: 10px;
+  width: 100%;
+}
+
+.list .item {
+  float: left;
+  background: blueviolet;
+  width: 300px;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
