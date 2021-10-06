@@ -34,8 +34,8 @@ function list() {
        <h2>${note.title}</h2>
        <p>${note.description}</p>
 
-       <a href="">Editar</a>
-       <a href="">Excluir</a>
+       <button onClick="">Editar</button>
+       <button onClick="del('${note.id}')">Excluir</button>
     </div>
         `);
       }
@@ -45,6 +45,26 @@ function list() {
       alert(res.responseJSON.message);
     },
   });
+}
+
+function del(id) {
+  const answer = window.confirm('Deseja deletar essa anotação?');
+  if (answer) {
+    $.ajax({
+      type: 'delete',
+      url: '/notes',
+      data: JSON.stringify({ id: id }),
+      contentType: 'application/json; charset=utf-8',
+      success: function (data) {
+        alert(data.message);
+        list();
+      },
+
+      error: function (res) {
+        alert(res.responseJSON.message);
+      },
+    });
+  }
 }
 
 list();
