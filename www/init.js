@@ -25,7 +25,6 @@ function list() {
   $.ajax({
     type: 'get',
     url: '/notes',
-    data: JSON.stringify({ title: title, description: description }),
     contentType: 'application/json; charset=utf-8',
     success: function (data) {
       for (const note of data) {
@@ -34,11 +33,28 @@ function list() {
        <h2>${note.title}</h2>
        <p>${note.description}</p>
 
-       <button onClick="">Editar</button>
+       <button onClick="edit('${note.id}')">Editar</button>
        <button onClick="del('${note.id}')">Excluir</button>
     </div>
         `);
       }
+    },
+
+    error: function (res) {
+      alert(res.responseJSON.message);
+    },
+  });
+}
+
+function edit(id) {
+  $.ajax({
+    type: 'get',
+    url: '/notes/' + id,
+    contentType: 'application/json; charset=utf-8',
+    success: function (data) {
+      console.log(JSON.parse(data));
+      // $('#title').val();
+      // $('#description').val();
     },
 
     error: function (res) {
